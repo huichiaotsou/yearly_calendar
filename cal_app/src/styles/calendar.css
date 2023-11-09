@@ -1,0 +1,47 @@
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  #year-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .month-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 10px;
+    text-align: center;
+    width: 300px;
+    min-width: 300px;
+    margin: 20px;
+  }
+
+  .calendar-header {
+    grid-column: 1 / span 7;
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+
+  .sunday {
+    background-color: rgb(234, 108, 108);
+  }
+
+  .calendar-day {
+    font-weight: bold;
+    padding: 2px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+
+  .calendar-day:hover{
+    background-color: #a09c9c;
+  }
+
+  .calendar-day-name {
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+  }
