@@ -4,7 +4,7 @@ function NavBar() {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item" href="/">
+        {/* <a className="navbar-item" href="/">
           <img
             // TODO: replace LOGO
             src="https://bulma.io/images/bulma-logo.png"
@@ -12,9 +12,9 @@ function NavBar() {
             height={28}
             alt="logo"
           />
-        </a>
+        </a> */}
         {/* TODO: HAMBURGER MENU BELOW */}
-        {/* <a
+        <a
           role="button"
           className="navbar-burger"
           aria-label="menu"
@@ -24,12 +24,19 @@ function NavBar() {
           <span aria-hidden="true" />
           <span aria-hidden="true" />
           <span aria-hidden="true" />
-        </a> */}
+        </a>
       </div>
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
-          <Link to="/planning" className="navbar-item">
-            Planning
+          <Link
+            to="/"
+            className="navbar-item"
+            style={{ fontWeight: "700", fontSize: "25px" }}
+          >
+            Our Kits
+          </Link>
+          <Link to="/calplanning" className="navbar-item">
+            Calendar Planning
           </Link>
           {/* TODO: DROP DOWN MENU BELOW */}
           {/* <div className="navbar-item has-dropdown is-hoverable">
@@ -44,7 +51,7 @@ function NavBar() {
           </div> */}
         </div>
         <div className="navbar-end">
-          <div className="navbar-item">
+          {/* <div className="navbar-item">
             <div className="buttons">
               <a className="button is-primary" href="/signup">
                 <strong>Sign up</strong>
@@ -53,7 +60,7 @@ function NavBar() {
                 Log in
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </nav>

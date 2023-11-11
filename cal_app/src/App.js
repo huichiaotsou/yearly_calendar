@@ -9,11 +9,11 @@ import "bulma/css/bulma.css";
 // TODO: import Footer from "./components/Footer";
 
 // Nav Bar
-import NavBar from "./components/nav_bar";
+import NavBar from "./components/cal_planning/nav_bar";
 
 // Pages
 import HomePage from "./pages/Home";
-import PlanningPage from "./pages/PlanningPage";
+import Calendar from "./pages/Calendar";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
       <Routes>
         <Route>
           <Route exact path="/" element={<HomePage />} />
-          <Route path="/planning" element={<PlanningPage />} />
+          <Route path="/calplanning" element={<Calendar />} />
           <Route path="/test" />
         </Route>
       </Routes>
