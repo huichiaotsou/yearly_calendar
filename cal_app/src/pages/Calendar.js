@@ -3,7 +3,7 @@ import { PlanningProvider } from "../contexts/planning";
 import { useState } from "react";
 import Year from "../components/cal_planning/calendar";
 import YearSelect from "../components/cal_planning/year_select";
-import ScheduleEventsDialog from "../components/cal_planning/schedule_dialog";
+import ScheduleDialog from "../components/cal_planning/dialog/dialog";
 
 function Calendar() {
   const thisYear = new Date().getFullYear();
@@ -16,7 +16,7 @@ function Calendar() {
   return (
     <PlanningProvider>
       <div id="controller_container">
-        <ScheduleEventsDialog currYear={year} />
+        <ScheduleDialog currYear={year} />
         <YearSelect currYear={year} onChange={handleChange} />
       </div>
 
