@@ -1,5 +1,30 @@
-import useDialogContext from "../../../hooks/use_dialog_context";
-import useCalPlanningContext from "../../../hooks/use_cal_planning_context";
+import { useDialogContext } from "../../../hooks/use_contexts";
+import { useCalPlanningContext } from "../../../hooks/use_contexts";
+
+const Day = ({ date, handleCheckboxChange }) => {
+  const { year } = useCalPlanningContext();
+  const { checkedDays } = useDialogContext();
+
+  const showEvents = (dateString) => {
+    console.log("show events of date: ", dateString);
+  };
+
+  return (
+    <div className="dates_in_month">
+      <input
+        type="checkbox"
+        checked={checkedDays.includes(date.getTime())}
+        onChange={() => handleCheckboxChange(date.getTime())}
+      />
+      <label
+        className="date_unit"
+        onClick={() => {
+          showEvents(`${year}-${date.getMonth() + 1}-${date.getDate()}`);
+        }}
+      >{` ${date.getMonth() + 1}/${date.getDate()}`}</label>
+    </div>
+  );
+};
 
 const WeekdaysList = () => {
   const { checkedDays, setCheckedDays, recurringDay } = useDialogContext();
@@ -60,14 +85,11 @@ const WeekdaysList = () => {
           })}`}</h3>
           <div className="dates_in_month_container">
             {monthDates.map((date) => (
-              <div key={date.getTime()} className="dates_in_month">
-                <input
-                  type="checkbox"
-                  checked={checkedDays.includes(date.getTime())}
-                  onChange={() => handleCheckboxChange(date.getTime())}
-                />
-                <label>{` ${date.getMonth() + 1}/${date.getDate()}`}</label>
-              </div>
+              <Day
+                key={date.getTime()}
+                date={date}
+                handleCheckboxChange={handleCheckboxChange}
+              />
             ))}
           </div>
         </div>

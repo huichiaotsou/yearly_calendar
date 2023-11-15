@@ -10,7 +10,6 @@ const ScheduleDialog = () => {
 
   return (
     <DialogProvider>
-      <DateDialog dialogRef={dateDialog.ref} close={dateDialog.close} />
       <EventDialog
         dialogRef={eventDialog.ref}
         close={eventDialog.close}
@@ -22,6 +21,7 @@ const ScheduleDialog = () => {
       >
         Schedule Events
       </button>
+      <DateDialog dialogRef={dateDialog.ref} close={dateDialog.close} />
     </DialogProvider>
   );
 };

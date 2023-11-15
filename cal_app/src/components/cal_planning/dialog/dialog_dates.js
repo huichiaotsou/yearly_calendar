@@ -1,5 +1,5 @@
 import WeekdaysList from "./dates_checkbox";
-import useDialogContext from "../../../hooks/use_dialog_context";
+import { useDialogContext } from "../../../hooks/use_contexts";
 
 export default function DateDialog({ dialogRef, close }) {
   const { setCheckedDays } = useDialogContext();
