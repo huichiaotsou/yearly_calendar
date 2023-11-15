@@ -49,6 +49,7 @@ const WeekdaysList = ({
         }{" "}
         in {currYear}
       </h2>
+
       {Object.entries(datesByMonth).map(([month, monthDates]) => (
         <div key={month}>
           <br />
@@ -57,7 +58,7 @@ const WeekdaysList = ({
           })}`}</h3>
           <div className="dates_in_month_container">
             {monthDates.map((date) => (
-              <div key={date.toString()} className="dates_in_month">
+              <div key={date.getTime()} className="dates_in_month">
                 <input
                   type="checkbox"
                   checked={checkedWeekdays.includes(date.getTime())}

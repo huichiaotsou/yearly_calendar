@@ -1,4 +1,6 @@
-import { useDialog } from "../../..//hooks/useDialogRef";
+import { DialogProvider } from "../../../contexts/dialog";
+import { useDialog } from "../../../hooks/use_dialog_ref";
+
 import EventDialog from "./dialog_event";
 import DateDialog from "./dialog_dates";
 
@@ -7,7 +9,7 @@ const ScheduleDialog = ({ currYear }) => {
   const eventDialog = useDialog();
 
   return (
-    <>
+    <DialogProvider>
       <DateDialog dialogRef={dateDialog.ref} close={dateDialog.close} />
       <EventDialog
         dialogRef={eventDialog.ref}
@@ -20,7 +22,7 @@ const ScheduleDialog = ({ currYear }) => {
       >
         Schedule Events
       </button>
-    </>
+    </DialogProvider>
   );
 };
 
