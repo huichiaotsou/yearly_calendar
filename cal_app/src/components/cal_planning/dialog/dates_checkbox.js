@@ -12,6 +12,7 @@ const Day = ({ date, handleCheckboxChange }) => {
   return (
     <div className="dates_in_month">
       <input
+        className="date_unit_checkbox"
         type="checkbox"
         checked={checkedDays.includes(date.getTime())}
         onChange={() => handleCheckboxChange(date.getTime())}
