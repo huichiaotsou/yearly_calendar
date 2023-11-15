@@ -1,13 +1,3 @@
-function Day({ year, month, day }) {
-  return (
-    <>
-      <div className="calendar-day" data-date={`${year}-${month}-${day}`}>
-        {day}
-      </div>
-    </>
-  );
-}
-
 function Days({ year, month }) {
   const weekdayOfFirstDay = new Date(year, month - 1, 1).getDay();
   const daysNumber = new Date(year, month, 0).getDate();
