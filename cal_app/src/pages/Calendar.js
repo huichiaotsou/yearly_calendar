@@ -1,29 +1,21 @@
 import "../styles/calendar.css";
-import { PlanningProvider } from "../contexts/planning";
-import { useState } from "react";
+import { CalPlanningProvider } from "../contexts/cal_planning";
 import Year from "../components/cal_planning/calendar";
 import YearSelect from "../components/cal_planning/year_select";
 import ScheduleDialog from "../components/cal_planning/dialog/dialog";
 
 function Calendar() {
-  const thisYear = new Date().getFullYear();
-  const [year, setYear] = useState(thisYear);
-
-  const handleChange = async (year) => {
-    setYear(year);
-  };
-
   return (
-    <PlanningProvider>
+    <CalPlanningProvider>
       <div id="controller_container">
-        <ScheduleDialog currYear={year} />
-        <YearSelect currYear={year} onChange={handleChange} />
+        <ScheduleDialog />
+        <YearSelect />
       </div>
 
       <div id="calendar-container">
-        <Year currYear={year} />
+        <Year />
       </div>
-    </PlanningProvider>
+    </CalPlanningProvider>
   );
 }
 

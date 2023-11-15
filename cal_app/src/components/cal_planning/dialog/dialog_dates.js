@@ -1,8 +1,8 @@
 import WeekdaysList from "./dates_checkbox";
-import { useState } from "react";
+import useDialogContext from "../../../hooks/use_dialog_context";
 
 export default function DateDialog({ dialogRef, close }) {
-  const [checkedWeekdays, setCheckedWeekdays] = useState([]);
+  const { setCheckedDays } = useDialogContext();
 
   return (
     <div>
@@ -11,7 +11,7 @@ export default function DateDialog({ dialogRef, close }) {
           className="delete"
           onClick={() => {
             close();
-            setCheckedWeekdays([]);
+            setCheckedDays([]);
           }}
         ></button>
         <form
@@ -24,19 +24,14 @@ export default function DateDialog({ dialogRef, close }) {
           }}
         >
           <div className="field">
-            <WeekdaysList
-              currYear={2023}
-              weekdayPicked={0}
-              checkedWeekdays={checkedWeekdays}
-              setCheckedWeekdays={setCheckedWeekdays}
-            />
+            <WeekdaysList />
           </div>
 
           <button
             className="button is-primary"
             onClick={() => {
               close();
-              setCheckedWeekdays([]);
+              setCheckedDays([]);
             }}
           >
             Submit

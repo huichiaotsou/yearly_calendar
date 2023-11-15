@@ -4,7 +4,7 @@ import { useDialog } from "../../../hooks/use_dialog_ref";
 import EventDialog from "./dialog_event";
 import DateDialog from "./dialog_dates";
 
-const ScheduleDialog = ({ currYear }) => {
+const ScheduleDialog = () => {
   const dateDialog = useDialog();
   const eventDialog = useDialog();
 

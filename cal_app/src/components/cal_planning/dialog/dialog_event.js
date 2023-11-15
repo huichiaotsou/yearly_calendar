@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import useDialogContext from "../../../hooks/use_dialog_context";
 
 export default function EventDialog({ dialogRef, close, openDateDialog }) {
-  const [event, setEvent] = useState("");
-  const [venue, setVenue] = useState("");
-  const [recurringDay, setRecurringDay] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
+  const {
+    event,
+    setEvent,
+    venue,
+    setVenue,
+    recurringDay,
+    setRecurringDay,
+    startTime,
+    setStartTime,
+    endTime,
+    setEndTime,
+    resetEventDetailFields,
+  } = useDialogContext();
 
   function isFormValid() {
     return (
@@ -17,14 +25,6 @@ export default function EventDialog({ dialogRef, close, openDateDialog }) {
     );
   }
 
-  function resetAllFields() {
-    setEvent("");
-    setVenue("");
-    setRecurringDay("");
-    setStartTime("");
-    setEndTime("");
-  }
-
   return (
     <div>
       <dialog className="dialogs notification" ref={dialogRef}>
@@ -32,7 +32,7 @@ export default function EventDialog({ dialogRef, close, openDateDialog }) {
           className="delete"
           onClick={() => {
             close();
-            resetAllFields();
+            resetEventDetailFields();
           }}
         ></button>
         <form

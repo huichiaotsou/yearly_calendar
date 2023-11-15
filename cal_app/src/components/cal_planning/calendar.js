@@ -1,4 +1,8 @@
-function Days({ year, month }) {
+import useCalPlanningContext from "../../hooks/use_cal_planning_context";
+
+function Days({ month }) {
+  const { year } = useCalPlanningContext();
+
   const weekdayOfFirstDay = new Date(year, month - 1, 1).getDay();
   const daysNumber = new Date(year, month, 0).getDate();
 
@@ -25,7 +29,8 @@ function Days({ year, month }) {
     </>
   );
 }
-function Month({ year, month }) {
+function Month({ month }) {
+  const { year } = useCalPlanningContext();
   const monthName = new Date(year, month - 1, 1).toLocaleString("default", {
     month: "long",
   });
@@ -52,10 +57,11 @@ function Month({ year, month }) {
   );
 }
 
-function Year({ currYear }) {
-  const monthNames = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  const calendar = monthNames.map((m) => {
-    return <Month year={currYear} month={m} key={`${currYear}-${m}`} />;
+function Year() {
+  const { year } = useCalPlanningContext();
+  const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const calendar = months.map((m) => {
+    return <Month year={year} month={m} key={`${year}-${m}`} />;
   });
 
   // TODO: get already planned calendar from API

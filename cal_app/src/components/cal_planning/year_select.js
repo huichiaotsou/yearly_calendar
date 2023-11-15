@@ -1,10 +1,14 @@
-function YearSelect({ currYear, onChange }) {
+import useCalPlanningContext from "../../hooks/use_cal_planning_context";
+
+function YearSelect() {
+  const { year, setYear } = useCalPlanningContext();
+
   const handleLastYear = async (e) => {
-    await onChange(currYear - 1);
+    await setYear(year - 1);
   };
 
   const handleNextYear = async (e) => {
-    await onChange(currYear + 1);
+    await setYear(year + 1);
   };
 
   return (
@@ -16,7 +20,7 @@ function YearSelect({ currYear, onChange }) {
         Previous
       </button>
       <div id="current_year" className="year_select_element">
-        {currYear}
+        {year}
       </div>
       <button
         className="button is-primary is-normal is-light year_select_element"
