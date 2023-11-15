@@ -1,0 +1,155 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+#controller_container {
+  display: flex;
+  align-items: center;
+}
+
+.open_dialog_buttons {
+  margin-left: 5px;
+}
+
+.dialogs {
+  opacity: 0;
+  scale: 0;
+  width: 360px;
+  transition: all 0.3s;
+  border-radius: 4px;
+  border: 1px #dbdbdb solid;
+
+  flex: 1;
+}
+
+.dialogs[open]{
+  opacity: 1;
+  scale: 1;
+}
+
+.dialogs::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#time_container{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
+.time_select {
+  width: 50%;
+}
+
+.dates_in_month_container{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.dates_in_month {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.date_unit_checkbox {
+  width: 18px;
+  height: 18px;
+}
+
+.date_unit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding-left: 3px; */
+  margin: 2px;
+  margin-right: 8px;
+
+  border: 0 solid #E2E8F0;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+
+  width: 50px;
+  height: 30px;
+  text-align: center;
+}
+
+.date_unit:hover{
+  cursor: pointer;
+  background-color: #a09c9c;
+}
+
+.schedule_selects{
+  width: 100%;
+  height: 40px;
+  border: 1px #dbdbdb solid;
+  border-radius: 4px;
+}
+
+#calendar-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#year_select_container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+
+  flex: 2;
+}
+
+#current_year{
+  font-size: 25px;
+}
+
+.year_select_element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.month-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+  text-align: center;
+  width: 300px;
+  min-width: 300px;
+  margin: 10px;
+}
+
+.calendar-header {
+  grid-column: 1 / span 7;
+  font-size: 24px;
+  /* margin-bottom: 5px; */
+  height: 36px;
+}
+
+.sunday {
+  background-color: rgb(234, 108, 108);
+}
+
+.calendar-day {
+  font-weight: bold;
+  /* padding: 2px; */
+  border-radius: 5px;
+  height: 24px;
+}
+
+.calendar-day:hover {
+  background-color: #a09c9c;
+}
+
+.calendar-day-name {
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  height: 24px;
+}
