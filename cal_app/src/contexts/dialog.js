@@ -7,14 +7,16 @@ function DialogProvider({ children }) {
   // Event details
   const [event, setEvent] = useState("");
 
+  const [locations, setLocations] = useState([]);
   const [venues, setVenues] = useState([]);
 
   const [recurringDay, setRecurringDay] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
 
-  // Checked days
+  // Checked States
   const [checkedDays, setCheckedDays] = useState([]);
+  const [checkedLocations, setCheckedLocations] = useState([]);
   const [checkedVenues, setCheckedVenues] = useState([]);
 
   const fetchVenues = async (locations) => {
@@ -29,8 +31,16 @@ function DialogProvider({ children }) {
     ]);
   };
 
+  const fetchLocations = async () => {
+    // const res = await axios.get(
+    //   `http://${config.domain}:${config.backendPort}/venues/locations=_&_`
+    // );
+    setLocations(["Taipei", "Taichung"]);
+  };
+
   function resetEventDetailFields() {
     setEvent("");
+    setCheckedLocations([]);
     setCheckedVenues([]);
     setRecurringDay("");
     setStartTime("");
@@ -44,6 +54,11 @@ function DialogProvider({ children }) {
   const dialogContexts = {
     event,
     setEvent,
+    locations,
+    setLocations,
+    checkedLocations,
+    setCheckedLocations,
+    fetchLocations,
     venues,
     setVenues,
     checkedVenues,

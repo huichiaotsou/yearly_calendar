@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDialogContext } from "../../../hooks/use_contexts";
 import { useEventTypesContext } from "../../../hooks/use_contexts";
 import VenueList from "./venue_list";
+import LocationList from "./location_list";
 
 export default function EventDialog({ dialogRef, close, openDateDialog }) {
   const {
@@ -68,7 +69,7 @@ export default function EventDialog({ dialogRef, close, openDateDialog }) {
           </div>
           <div className="field">
             <label className="label">Locations</label>
-            <VenueList />
+            <LocationList />
           </div>
           <div className="field">
             <label className="label">Venues</label>

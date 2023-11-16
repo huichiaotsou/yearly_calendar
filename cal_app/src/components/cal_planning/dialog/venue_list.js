@@ -7,12 +7,13 @@ const Venue = ({ venue, handleCheckboxChange }) => {
   return (
     <div className="">
       <input
+        id={venue}
         className=""
         type="checkbox"
         checked={checkedVenues.includes(venue)}
         onChange={() => handleCheckboxChange(venue)}
       />
-      <label className="">{`${venue}`}</label>
+      <label htmlFor={venue} className="">{`${venue}`}</label>
     </div>
   );
 };
