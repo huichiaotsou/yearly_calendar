@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { useDialogContext } from "../../../hooks/use_contexts";
+import { useEventTypesContext } from "../../../hooks/use_contexts";
 
 export default function EventDialog({ dialogRef, close, openDateDialog }) {
   const {
@@ -14,6 +16,12 @@ export default function EventDialog({ dialogRef, close, openDateDialog }) {
     setEndTime,
     resetEventDetailFields,
   } = useDialogContext();
+  const { eventTypes, fetchEventTypes } = useEventTypesContext();
+
+  useEffect(() => {
+    // This function will run when the component mounts
+    fetchEventTypes();
+  }, []); // The empty dependency array means it only runs once on mount
 
   function isFormValid() {
     return (
@@ -52,9 +60,11 @@ export default function EventDialog({ dialogRef, close, openDateDialog }) {
               value={event}
             >
               <option></option>
-              <option>Baptism</option>
-              <option>yth Night</option>
-              <option>Hope Experience</option>
+              {eventTypes.map((type, index) => (
+                <option key={index} value={type}>
+                  {type}
+                </option>
+              ))}
             </select>
           </div>
           <div className="field">

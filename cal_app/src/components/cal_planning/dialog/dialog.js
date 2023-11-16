@@ -1,4 +1,5 @@
 import { DialogProvider } from "../../../contexts/dialog";
+import { EventTypesProvider } from "../../../contexts/event_types";
 import { useDialog } from "../../../hooks/use_dialog_ref";
 
 import EventDialog from "./dialog_event";
@@ -10,11 +11,13 @@ const ScheduleDialog = () => {
 
   return (
     <DialogProvider>
-      <EventDialog
-        dialogRef={eventDialog.ref}
-        close={eventDialog.close}
-        openDateDialog={dateDialog.open}
-      />
+      <EventTypesProvider>
+        <EventDialog
+          dialogRef={eventDialog.ref}
+          close={eventDialog.close}
+          openDateDialog={dateDialog.open}
+        />
+      </EventTypesProvider>
       <button
         className="open_dialog_buttons button is-primary is-normal"
         onClick={eventDialog.open}

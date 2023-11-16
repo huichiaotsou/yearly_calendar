@@ -9,14 +9,11 @@ function CalPlanningProvider({ children }) {
   const thisYear = new Date().getFullYear();
   const [year, setYear] = useState(thisYear);
 
-  const getEventsInYear = async () => {
-    const res = await axios.get(
-      `http://${config.domain}:${config.backendPort}/events/${year}`
-    );
-    return res.data;
+  const calPlanningContexts = {
+    year,
+    setYear,
   };
 
-  const calPlanningContexts = { year, setYear, getEventsInYear };
   return (
     <CalPlanningContext.Provider value={calPlanningContexts}>
       {children}
