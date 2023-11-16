@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useDialogContext } from "../../../hooks/use_contexts";
 import { useEventTypesContext } from "../../../hooks/use_contexts";
+import VenueList from "./venue_list";
 
 export default function EventDialog({ dialogRef, close, openDateDialog }) {
   const {
     event,
     setEvent,
-    venue,
-    setVenue,
+    checkedVenues,
     recurringDay,
     setRecurringDay,
     startTime,
@@ -19,14 +19,13 @@ export default function EventDialog({ dialogRef, close, openDateDialog }) {
   const { eventTypes, fetchEventTypes } = useEventTypesContext();
 
   useEffect(() => {
-    // This function will run when the component mounts
     fetchEventTypes();
-  }, []); // The empty dependency array means it only runs once on mount
+  }, []);
 
   function isFormValid() {
     return (
       event !== "" &&
-      venue !== "" &&
+      checkedVenues.length === 0 &&
       recurringDay !== "" &&
       startTime !== "" &&
       endTime !== ""
@@ -68,17 +67,12 @@ export default function EventDialog({ dialogRef, close, openDateDialog }) {
             </select>
           </div>
           <div className="field">
-            <label className="label">Venue</label>
-            <select
-              className="control schedule_selects"
-              onChange={(e) => setVenue(e.target.value)}
-              value={venue}
-            >
-              <option></option>
-              <option>Main Hall</option>
-              <option>Gather</option>
-              <option>Kids Central</option>
-            </select>
+            <label className="label">Locations</label>
+            <VenueList />
+          </div>
+          <div className="field">
+            <label className="label">Venues</label>
+            <VenueList />
           </div>
           <div className="field">
             <label className="label">Recurring Day</label>
