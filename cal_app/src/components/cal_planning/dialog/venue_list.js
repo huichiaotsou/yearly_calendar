@@ -19,12 +19,17 @@ const Venue = ({ venue, handleCheckboxChange }) => {
 };
 
 const VenueList = () => {
-  const { venues, checkedVenues, setCheckedVenues, fetchVenues } =
-    useDialogContext();
+  const {
+    venues,
+    checkedVenues,
+    setCheckedVenues,
+    fetchVenues,
+    checkedLocations,
+  } = useDialogContext();
 
   useEffect(() => {
-    fetchVenues();
-  }, []);
+    fetchVenues(checkedLocations);
+  }, [checkedLocations]);
 
   const handleCheckboxChange = (venue) => {
     const updatedVenues = checkedVenues.includes(venue)
@@ -34,7 +39,7 @@ const VenueList = () => {
   };
 
   return (
-    <div>
+    <>
       {venues.map((venue) => (
         <Venue
           key={venue}
@@ -42,7 +47,7 @@ const VenueList = () => {
           handleCheckboxChange={handleCheckboxChange}
         />
       ))}
-    </div>
+    </>
   );
 };
 

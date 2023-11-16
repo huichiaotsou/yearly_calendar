@@ -20,15 +20,27 @@ function DialogProvider({ children }) {
   const [checkedVenues, setCheckedVenues] = useState([]);
 
   const fetchVenues = async (locations) => {
-    // const res = await axios.get(
-    //   `http://${config.domain}:${config.backendPort}/venues/locations=_&_`
-    // );
-    setVenues([
-      "Main Hall(TPE)",
-      "Gather(TPE)",
-      "Main Hall(TC)",
-      "Room 103(TC)",
-    ]);
+    const venues = [];
+    locations.map((loc) => {
+      // const res = await axios.get(
+      //   `http://${config.domain}:${config.backendPort}/venues/locations=?`
+      // );
+      //
+      // venues.push(res.data)
+    });
+
+    if (locations.includes("Taipei")) {
+      venues.push("Main Hall (Taipei)");
+      venues.push("Gather (Taipei)");
+      venues.push("Glassroom (Taipei)");
+    }
+
+    if (locations.includes("Taichung")) {
+      venues.push("Main Hall (Taichung)");
+      venues.push("Room 103 (Taichung)");
+    }
+
+    setVenues(venues);
   };
 
   const fetchLocations = async () => {

@@ -27,10 +27,10 @@ const LocationList = () => {
   }, []);
 
   const handleCheckboxChange = (venue) => {
-    const updatedVenues = checkedLocations.includes(venue)
+    const updatedLocations = checkedLocations.includes(venue)
       ? checkedLocations.filter((d) => d !== venue)
       : [...checkedLocations, venue];
-    setCheckedLocations(updatedVenues);
+    setCheckedLocations(updatedLocations);
   };
 
   return (
