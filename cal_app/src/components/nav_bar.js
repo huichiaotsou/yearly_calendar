@@ -33,10 +33,16 @@ function NavBar() {
             className="navbar-item"
             style={{ fontWeight: "700", fontSize: "25px" }}
           >
-            Our Kits
+            Home
           </Link>
-          <Link to="/calplanning" className="navbar-item">
-            Calendar Planning
+          <Link to="/planning" className="navbar-item">
+            Planning
+          </Link>
+          <Link to="/events" className="navbar-item">
+            All Events
+          </Link>
+          <Link to="/venues" className="navbar-item">
+            Manage Venues
           </Link>
           {/* TODO: DROP DOWN MENU BELOW */}
           {/* <div className="navbar-item has-dropdown is-hoverable">

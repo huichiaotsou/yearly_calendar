@@ -17,20 +17,6 @@ const ScheduleDialog = () => {
         Schedule Events
       </button>
 
-      <button
-        className="open_dialog_buttons button is-primary is-light is-normal"
-        onClick={eventLocationDialog.open}
-      >
-        Manage Events
-      </button>
-
-      <button
-        className="open_dialog_buttons button is-primary is-light is-normal"
-        onClick={eventLocationDialog.open}
-      >
-        Manage Venues
-      </button>
-
       <EventLocationDialog
         dialogRef={eventLocationDialog.ref}
         close={eventLocationDialog.close}
