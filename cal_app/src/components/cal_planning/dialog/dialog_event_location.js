@@ -1,35 +1,39 @@
 import { useEffect } from "react";
 import { useDialogContext } from "../../../hooks/use_contexts";
-import { useEventTypesContext } from "../../../hooks/use_contexts";
 import VenueList from "./venue_list";
 import LocationList from "./location_list";
 
-export default function EventDialog({ dialogRef, close, openDateDialog }) {
+export default function EventLocationDialog({
+  dialogRef,
+  close,
+  openDateDialog,
+}) {
   const {
-    event,
-    setEvent,
+    checkedEvent,
+    setCheckedEvent,
+    events,
+    fetchEvents,
     checkedVenues,
-    recurringDay,
-    setRecurringDay,
-    startTime,
-    setStartTime,
-    endTime,
-    setEndTime,
-    resetEventDetailFields,
+    // recurringDay,
+    // setRecurringDay,
+    // startTime,
+    // setStartTime,
+    // endTime,
+    // setEndTime,
+    resetEventLocationFields,
   } = useDialogContext();
-  const { eventTypes, fetchEventTypes } = useEventTypesContext();
 
   useEffect(() => {
-    fetchEventTypes();
+    fetchEvents();
   }, []);
 
   function isFormValid() {
     return (
-      event !== "" &&
-      checkedVenues.length === 0 &&
-      recurringDay !== "" &&
-      startTime !== "" &&
-      endTime !== ""
+      checkedEvent !== "" && checkedVenues.length === 0
+      // &&
+      // recurringDay !== "" &&
+      // startTime !== "" &&
+      // endTime !== ""
     );
   }
 
@@ -40,7 +44,7 @@ export default function EventDialog({ dialogRef, close, openDateDialog }) {
           className="delete"
           onClick={() => {
             close();
-            resetEventDetailFields();
+            resetEventLocationFields();
           }}
         ></button>
         <form
@@ -56,11 +60,11 @@ export default function EventDialog({ dialogRef, close, openDateDialog }) {
             <label className="label">Event</label>
             <select
               className="control schedule_selects"
-              onChange={(e) => setEvent(e.target.value)}
-              value={event}
+              onChange={(e) => setCheckedEvent(e.target.value)}
+              value={checkedEvent}
             >
               <option></option>
-              {eventTypes.map((type, index) => (
+              {events.map((type, index) => (
                 <option key={index} value={type}>
                   {type}
                 </option>
@@ -75,7 +79,7 @@ export default function EventDialog({ dialogRef, close, openDateDialog }) {
             <label className="label">Venues</label>
             <VenueList />
           </div>
-          <div className="field">
+          {/* <div className="field">
             <label className="label">Recurring Day</label>
             <select
               className="control schedule_selects"
@@ -115,7 +119,7 @@ export default function EventDialog({ dialogRef, close, openDateDialog }) {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
 
           <button
             className="button is-primary"

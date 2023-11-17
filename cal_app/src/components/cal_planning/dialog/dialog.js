@@ -1,30 +1,45 @@
 import { DialogProvider } from "../../../contexts/dialog";
-import { EventTypesProvider } from "../../../contexts/event_types";
 import { useDialog } from "../../../hooks/use_dialog_ref";
 
-import EventDialog from "./dialog_event";
-import DateDialog from "./dialog_dates";
+import EventLocationDialog from "./dialog_event_location";
+import EventTimeDialog from "./dialog_event_time";
 
 const ScheduleDialog = () => {
-  const dateDialog = useDialog();
-  const eventDialog = useDialog();
+  const eventTimeDialog = useDialog();
+  const eventLocationDialog = useDialog();
 
   return (
     <DialogProvider>
-      <EventTypesProvider>
-        <EventDialog
-          dialogRef={eventDialog.ref}
-          close={eventDialog.close}
-          openDateDialog={dateDialog.open}
-        />
-      </EventTypesProvider>
       <button
         className="open_dialog_buttons button is-primary is-normal"
-        onClick={eventDialog.open}
+        onClick={eventLocationDialog.open}
       >
         Schedule Events
       </button>
-      <DateDialog dialogRef={dateDialog.ref} close={dateDialog.close} />
+
+      <button
+        className="open_dialog_buttons button is-primary is-light is-normal"
+        onClick={eventLocationDialog.open}
+      >
+        Manage Events
+      </button>
+
+      <button
+        className="open_dialog_buttons button is-primary is-light is-normal"
+        onClick={eventLocationDialog.open}
+      >
+        Manage Venues
+      </button>
+
+      <EventLocationDialog
+        dialogRef={eventLocationDialog.ref}
+        close={eventLocationDialog.close}
+        openDateDialog={eventTimeDialog.open}
+      />
+      <EventTimeDialog
+        dialogRef={eventTimeDialog.ref}
+        close={eventTimeDialog.close}
+      />
     </DialogProvider>
   );
 };
