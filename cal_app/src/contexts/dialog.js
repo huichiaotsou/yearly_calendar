@@ -5,20 +5,26 @@ import config from "../config.json";
 
 const DialogContext = createContext();
 
+function getTodayDateString() {
+  const today = new Date();
+  return `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+}
+
 function DialogProvider({ children }) {
   // Event details
   const [events, setEvents] = useState([]);
-  const [checkedEvent, setCheckedEvent] = useState("");
 
   const [locations, setLocations] = useState([]);
   const [venues, setVenues] = useState([]);
 
+  const [singleDate, setSingleDate] = useState(getTodayDateString());
   const [recurringDay, setRecurringDay] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
 
   // Checked States
   const [checkedDays, setCheckedDays] = useState([]);
+  const [checkedEvent, setCheckedEvent] = useState("");
   const [checkedLocations, setCheckedLocations] = useState([]);
   const [checkedVenues, setCheckedVenues] = useState([]);
 
@@ -164,6 +170,8 @@ function DialogProvider({ children }) {
 
     // date & time
     recurringDay,
+    singleDate,
+    setSingleDate,
     checkedDays,
     setCheckedDays,
     setRecurringDay,

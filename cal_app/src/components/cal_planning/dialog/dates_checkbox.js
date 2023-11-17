@@ -62,7 +62,7 @@ const WeekdaysList = () => {
 
   return (
     <div>
-      <h2>
+      <div className="dialog_titles">
         {"List of "}
         {
           [
@@ -76,10 +76,10 @@ const WeekdaysList = () => {
           ][recurringDay]
         }{" "}
         in {year}
-      </h2>
+      </div>
 
       {Object.entries(datesByMonth).map(([month, monthDates]) => (
-        <div key={month}>
+        <div key={month} className="month_container_checkbox">
           <br />
           <h3>{`${new Date(year, month - 1, 1).toLocaleString("default", {
             month: "long",

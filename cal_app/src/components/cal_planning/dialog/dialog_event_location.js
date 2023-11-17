@@ -13,7 +13,6 @@ export default function EventLocationDialog({
     setCheckedEvent,
     events,
     fetchEvents,
-    checkedVenues,
     // recurringDay,
     // setRecurringDay,
     // startTime,
@@ -28,13 +27,7 @@ export default function EventLocationDialog({
   }, []);
 
   function isFormValid() {
-    return (
-      checkedEvent !== "" && checkedVenues.length === 0
-      // &&
-      // recurringDay !== "" &&
-      // startTime !== "" &&
-      // endTime !== ""
-    );
+    return checkedEvent !== "";
   }
 
   return (
@@ -79,47 +72,6 @@ export default function EventLocationDialog({
             <label className="label">Venues</label>
             <VenueList />
           </div>
-          {/* <div className="field">
-            <label className="label">Recurring Day</label>
-            <select
-              className="control schedule_selects"
-              onChange={(e) => setRecurringDay(e.target.value)}
-              value={recurringDay}
-            >
-              <option></option>
-              <option value={0}>Sunday</option>
-              <option value={1}>Monday</option>
-              <option value={2}>Tuesday</option>
-              <option value={3}>Wednesday</option>
-              <option value={4}>Thursday</option>
-              <option value={5}>Friday</option>
-              <option value={6}>Saturday</option>
-            </select>
-          </div>
-          <div id="time_container">
-            <div className="field time_select">
-              <label className="label">Start</label>
-              <div className="control">
-                <input
-                  className="input"
-                  type="time"
-                  value={startTime}
-                  onChange={(e) => setStartTime(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="field time_select">
-              <label className="label">End</label>
-              <div className="control">
-                <input
-                  className="input"
-                  type="time"
-                  value={endTime}
-                  onChange={(e) => setEndTime(e.target.value)}
-                />
-              </div>
-            </div>
-          </div> */}
 
           <button
             className="button is-primary"
@@ -127,7 +79,7 @@ export default function EventLocationDialog({
               close();
               openDateDialog();
             }}
-            // disabled={!isFormValid()}
+            disabled={!isFormValid()}
           >
             Next
           </button>

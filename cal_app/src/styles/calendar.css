@@ -21,6 +21,13 @@ body {
   margin: 5px;
 }
 
+.dialog_titles {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .dialogs {
   opacity: 0;
   scale: 0;
@@ -45,6 +52,13 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: baseline;
+}
+
+.month_container_checkbox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .time_select {
