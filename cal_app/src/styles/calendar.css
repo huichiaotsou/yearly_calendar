@@ -48,10 +48,14 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-#time_container{
+.horizontal_container{
   display: flex;
   justify-content: space-evenly;
   align-items: baseline;
+}
+
+.date_time_input {
+  width: 130px;
 }
 
 .month_container_checkbox {

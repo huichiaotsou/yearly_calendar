@@ -14,10 +14,12 @@ function DialogProvider({ children }) {
   // Event details
   const [events, setEvents] = useState([]);
 
+  const [isRecurring, setIsRecurring] = useState(false);
   const [locations, setLocations] = useState([]);
   const [venues, setVenues] = useState([]);
 
-  const [singleDate, setSingleDate] = useState(getTodayDateString());
+  const [dateStart, setDateStart] = useState(getTodayDateString());
+  const [dateEnd, setDateEnd] = useState(getTodayDateString());
   const [recurringDay, setRecurringDay] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
@@ -58,14 +60,17 @@ function DialogProvider({ children }) {
     setLocations(["Taipei", "Taichung"]);
   };
 
-  function resetEventLocationFields() {
+  function resetAllFields() {
+    setIsRecurring(false);
     setCheckedEvent("");
     setCheckedLocations([]);
     setCheckedVenues([]);
-  }
-
-  function resetCheckedDays() {
+    setRecurringDay("");
+    setDateStart(getTodayDateString());
+    setDateEnd(getTodayDateString());
     setCheckedDays([]);
+    setStartTime("");
+    setEndTime("");
   }
 
   const fetchEvents = async () => {
@@ -153,6 +158,8 @@ function DialogProvider({ children }) {
     setEvents,
     checkedEvent,
     setCheckedEvent,
+    isRecurring,
+    setIsRecurring,
 
     // locations
     locations,
@@ -170,8 +177,10 @@ function DialogProvider({ children }) {
 
     // date & time
     recurringDay,
-    singleDate,
-    setSingleDate,
+    dateStart,
+    setDateStart,
+    dateEnd,
+    setDateEnd,
     checkedDays,
     setCheckedDays,
     setRecurringDay,
@@ -181,8 +190,7 @@ function DialogProvider({ children }) {
     setEndTime,
 
     // functions - reset
-    resetEventLocationFields,
-    resetCheckedDays,
+    resetAllFields,
 
     // functions - event types
     fetchEvents,

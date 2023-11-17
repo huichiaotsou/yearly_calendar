@@ -19,7 +19,7 @@ export default function EventLocationDialog({
     // setStartTime,
     // endTime,
     // setEndTime,
-    resetEventLocationFields,
+    resetAllFields,
   } = useDialogContext();
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function EventLocationDialog({
           className="delete"
           onClick={() => {
             close();
-            resetEventLocationFields();
+            resetAllFields();
           }}
         ></button>
         <form

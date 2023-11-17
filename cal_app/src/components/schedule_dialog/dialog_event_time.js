@@ -1,37 +1,57 @@
 import WeekdaysList from "./dates_checkbox";
 import { useDialogContext } from "../../hooks/use_contexts";
-import { useState } from "react";
 
 export default function EventTimeDialog({ dialogRef, close }) {
   const {
     checkedEvent,
-    singleDate,
-    setSingleDate,
-    setCheckedDays,
+    isRecurring,
+    setIsRecurring,
+    dateStart,
+    setDateStart,
+    dateEnd,
+    setDateEnd,
     recurringDay,
     setRecurringDay,
     startTime,
     setStartTime,
     endTime,
     setEndTime,
+    resetAllFields,
   } = useDialogContext();
-
-  const [isRecurring, setIsRecurring] = useState(false);
 
   let datePick = "";
   if (!isRecurring) {
     datePick = (
-      <div className="field">
-        <label className="label">Date</label>
-        <input
-          className="control"
-          type="date"
-          value={singleDate}
-          id="event_date"
-          onChange={(e) => {
-            setSingleDate(e.target.value);
-          }}
-        />
+      <div className="horizontal_container">
+        <div className="field">
+          <label htmlFor="event_date_start" className="label">
+            Date Start
+          </label>
+          <input
+            className="input date_time_input"
+            type="date"
+            value={dateStart}
+            id="event_date_start"
+            onChange={(e) => {
+              setDateStart(e.target.value);
+              setDateEnd(e.target.value);
+            }}
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="event_date_start" className="label">
+            Date End
+          </label>
+          <input
+            className="input date_time_input"
+            type="date"
+            value={dateEnd}
+            id="event_date_start"
+            onChange={(e) => {
+              setDateEnd(e.target.value);
+            }}
+          />
+        </div>
       </div>
     );
   }
@@ -45,7 +65,6 @@ export default function EventTimeDialog({ dialogRef, close }) {
           className="control schedule_selects"
           onChange={(e) => {
             setRecurringDay(e.target.value);
-            setCheckedDays([]);
           }}
           value={recurringDay}
         >
@@ -78,7 +97,7 @@ export default function EventTimeDialog({ dialogRef, close }) {
           className="delete"
           onClick={() => {
             close();
-            setCheckedDays([]);
+            resetAllFields();
           }}
         ></button>
 
@@ -113,12 +132,12 @@ export default function EventTimeDialog({ dialogRef, close }) {
 
           {datePick}
 
-          <div id="time_container" className="field">
+          <div className="horizontal_container field">
             <div className="field time_select">
-              <label className="label">Event Starts</label>
+              <label className="label">Time Start</label>
               <div className="control">
                 <input
-                  className="input"
+                  className="input date_time_input"
                   type="time"
                   value={startTime}
                   onChange={(e) => setStartTime(e.target.value)}
@@ -126,10 +145,10 @@ export default function EventTimeDialog({ dialogRef, close }) {
               </div>
             </div>
             <div className="field time_select">
-              <label className="label">Event Ends</label>
+              <label className="label">Time End</label>
               <div className="control">
                 <input
-                  className="input"
+                  className="input date_time_input"
                   type="time"
                   value={endTime}
                   onChange={(e) => setEndTime(e.target.value)}
@@ -146,7 +165,7 @@ export default function EventTimeDialog({ dialogRef, close }) {
             className="button is-primary"
             onClick={() => {
               close();
-              setCheckedDays([]);
+              resetAllFields();
             }}
           >
             Submit
