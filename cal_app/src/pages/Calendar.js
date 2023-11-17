@@ -1,8 +1,8 @@
 import "../styles/calendar.css";
 import { CalPlanningProvider } from "../contexts/cal_planning";
-import Year from "../components/cal_planning/calendar";
-import YearSelect from "../components/cal_planning/year_select";
-import ScheduleDialog from "../components/cal_planning/dialog/dialog";
+import Year from "../components/calendar";
+import YearSelect from "../components/year_select";
+import ScheduleDialog from "../components/schedule_dialog/main";
 
 function Calendar() {
   return (

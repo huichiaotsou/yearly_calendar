@@ -1,5 +1,5 @@
-import { DialogProvider } from "../../../contexts/dialog";
-import { useDialog } from "../../../hooks/use_dialog_ref";
+import { DialogProvider } from "../../contexts/dialog";
+import { useDialog } from "../../hooks/use_dialog_ref";
 
 import EventLocationDialog from "./dialog_event_location";
 import EventTimeDialog from "./dialog_event_time";

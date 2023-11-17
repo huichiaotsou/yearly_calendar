@@ -1,5 +1,5 @@
-import { useDialogContext } from "../../../hooks/use_contexts";
-import { useCalPlanningContext } from "../../../hooks/use_contexts";
+import { useDialogContext } from "../../hooks/use_contexts";
+import { useCalPlanningContext } from "../..//hooks/use_contexts";
 
 const Day = ({ date, handleCheckboxChange }) => {
   const { year } = useCalPlanningContext();

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDialogContext } from "../../../hooks/use_contexts";
+import { useDialogContext } from "../../hooks/use_contexts";
 
 const Venue = ({ venue, handleCheckboxChange }) => {
   const { checkedVenues } = useDialogContext();

@@ -1,4 +1,4 @@
-import { useCalPlanningContext } from "../../hooks/use_contexts";
+import { useCalPlanningContext } from "../hooks/use_contexts";
 
 function Days({ month }) {
   const { year } = useCalPlanningContext();

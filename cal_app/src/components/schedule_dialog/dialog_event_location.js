@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDialogContext } from "../../../hooks/use_contexts";
+import { useDialogContext } from "../../hooks/use_contexts";
 import VenueList from "./venue_list";
 import LocationList from "./location_list";
 

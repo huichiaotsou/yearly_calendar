@@ -9,7 +9,7 @@ import "bulma/css/bulma.css";
 // TODO: import Footer from "./components/Footer";
 
 // Nav Bar
-import NavBar from "./components/cal_planning/nav_bar";
+import NavBar from "./components/nav_bar";
 
 // Pages
 import HomePage from "./pages/Home";

@@ -1,5 +1,5 @@
 import WeekdaysList from "./dates_checkbox";
-import { useDialogContext } from "../../../hooks/use_contexts";
+import { useDialogContext } from "../../hooks/use_contexts";
 import { useState } from "react";
 
 export default function EventTimeDialog({ dialogRef, close }) {
