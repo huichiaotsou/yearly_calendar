@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDialogContext } from "../../hooks/use_contexts";
 import { useAppContext } from "../../hooks/use_contexts";
 
-const Venue = ({ venue, handleCheckboxChange }) => {
+const Venue = ({ loc, venue, handleCheckboxChange }) => {
   const { checkedVenues } = useDialogContext();
 
   return (
@@ -14,20 +14,21 @@ const Venue = ({ venue, handleCheckboxChange }) => {
         checked={checkedVenues.includes(venue)}
         onChange={() => handleCheckboxChange(venue)}
       />
-      <label htmlFor={venue} className="">{`${venue}`}</label>
+      <label htmlFor={venue} className="">
+        {venue}
+      </label>
     </div>
   );
 };
 
 const VenueList = () => {
-  const { checkedVenues, setCheckedVenues, checkedLocations } =
+  const { checkedLocations, checkedVenues, setCheckedVenues } =
     useDialogContext();
-
   const { venues, fetchVenues } = useAppContext();
 
   useEffect(() => {
-    fetchVenues(checkedLocations);
-  }, [checkedLocations]);
+    fetchVenues();
+  }, []);
 
   const handleCheckboxChange = (venue) => {
     const updatedVenues = checkedVenues.includes(venue)
@@ -36,17 +37,18 @@ const VenueList = () => {
     setCheckedVenues(updatedVenues);
   };
 
-  return (
-    <>
-      {venues.map((venue) => (
-        <Venue
-          key={venue}
-          venue={venue}
-          handleCheckboxChange={handleCheckboxChange}
-        />
-      ))}
-    </>
+  const venueList = checkedLocations.map((loc) =>
+    venues[loc].map((venue) => (
+      <Venue
+        key={`${loc}-${venue}`}
+        loc={loc}
+        venue={`${loc}: ${venue}`}
+        handleCheckboxChange={handleCheckboxChange}
+      />
+    ))
   );
+
+  return <>{venueList}</>;
 };
 
 export default VenueList;

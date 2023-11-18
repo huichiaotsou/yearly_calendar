@@ -41,18 +41,6 @@ export default function EventLocationDialog({
         >
           <div className="field">
             <label className="label">Event</label>
-            {/* <select
-              className="control schedule_selects"
-              onChange={(e) => setCheckedEvent(e.target.value)}
-              value={checkedEvent}
-            >
-              <option></option>
-              {events.map((type, index) => (
-                <option key={index} value={type}>
-                  {type}
-                </option>
-              ))}
-            </select> */}
             <EventSelect />
           </div>
           <div className="field">

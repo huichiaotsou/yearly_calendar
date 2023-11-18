@@ -22,6 +22,7 @@ const ScheduleDialog = () => {
         close={eventLocationDialog.close}
         openDateDialog={eventTimeDialog.open}
       />
+
       <EventTimeDialog
         dialogRef={eventTimeDialog.ref}
         close={eventTimeDialog.close}

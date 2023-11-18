@@ -13,7 +13,7 @@ function AppProvider({ children }) {
   const [year, setYear] = useState(thisYear);
 
   const [locations, setLocations] = useState([]);
-  const [venues, setVenues] = useState([]);
+  const [venues, setVenues] = useState({});
   const [events, setEvents] = useState({});
 
   const fetchLocations = async () => {
@@ -22,17 +22,7 @@ function AppProvider({ children }) {
   };
 
   const fetchVenues = async (locations) => {
-    const venues = [];
-    // const res = await axios.get(`http://${config.domain}:${config.backendPort}/venues`);
-    locations.map((loc) => {
-      venues.push(
-        ...venuesJson.venues[loc].map((v) => {
-          return `${v}-${loc}`;
-        })
-      );
-    });
-
-    setVenues(venues);
+    setVenues(venuesJson.venues);
   };
 
   const fetchEvents = async () => {
