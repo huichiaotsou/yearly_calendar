@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDialogContext } from "../../hooks/use_contexts";
+import { useAppContext, useDialogContext } from "../../hooks/use_contexts";
 
 const Location = ({ location, handleCheckboxChange }) => {
   const { checkedLocations } = useDialogContext();
@@ -19,8 +19,8 @@ const Location = ({ location, handleCheckboxChange }) => {
 };
 
 const LocationList = () => {
-  const { locations, checkedLocations, setCheckedLocations, fetchLocations } =
-    useDialogContext();
+  const { locations, fetchLocations } = useAppContext();
+  const { checkedLocations, setCheckedLocations } = useDialogContext();
 
   useEffect(() => {
     fetchLocations();

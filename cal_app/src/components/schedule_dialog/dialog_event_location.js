@@ -1,30 +1,20 @@
 import { useEffect } from "react";
-import { useDialogContext } from "../../hooks/use_contexts";
+import { useDialogContext, useAppContext } from "../../hooks/use_contexts";
 import VenueList from "./venue_list";
 import LocationList from "./location_list";
+import EventSelect from "./dialog_event_select";
 
 export default function EventLocationDialog({
   dialogRef,
   close,
   openDateDialog,
 }) {
-  const {
-    checkedEvent,
-    setCheckedEvent,
-    events,
-    fetchEvents,
-    // recurringDay,
-    // setRecurringDay,
-    // startTime,
-    // setStartTime,
-    // endTime,
-    // setEndTime,
-    resetAllFields,
-  } = useDialogContext();
+  const { checkedEvent, resetAllFields } = useDialogContext();
+  const { events, fetchEvents } = useAppContext();
 
   useEffect(() => {
     fetchEvents();
-  }, []);
+  }, [events]);
 
   function isFormValid() {
     return checkedEvent !== "";
@@ -51,7 +41,7 @@ export default function EventLocationDialog({
         >
           <div className="field">
             <label className="label">Event</label>
-            <select
+            {/* <select
               className="control schedule_selects"
               onChange={(e) => setCheckedEvent(e.target.value)}
               value={checkedEvent}
@@ -62,7 +52,8 @@ export default function EventLocationDialog({
                   {type}
                 </option>
               ))}
-            </select>
+            </select> */}
+            <EventSelect />
           </div>
           <div className="field">
             <label className="label">Locations</label>

@@ -1,0 +1,19 @@
+{
+    "venues": {
+        "Taipei": [
+            "Main Hall",
+            "Gather",
+            "Glass Room",
+            "Living Room",
+            "Kids Central",
+            "Central",
+            "Upper",
+            "eHQ"
+        ],
+        "Taichung": [
+            "Main Hall",
+            "Room 103",
+            "Office"
+        ]
+    }
+}

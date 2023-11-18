@@ -17,21 +17,25 @@ import Calendar from "./pages/Calendar";
 import Event from "./pages/Event";
 import Venue from "./pages/Venue";
 
+import { AppProvider } from "./contexts/app";
+
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
-      {/* TODO: <Header /> */}
-      <Routes>
-        <Route>
-          <Route exact path="/" element={<HomePage />} />
-          <Route path="/planning" element={<Calendar />} />
-          <Route path="/events" element={<Event />} />
-          <Route path="/venues" element={<Venue />} />
-        </Route>
-      </Routes>
-      {/* TODO: <Footer /> */}
-    </BrowserRouter>
+    <AppProvider>
+      <BrowserRouter>
+        <NavBar />
+        {/* TODO: <Header /> */}
+        <Routes>
+          <Route>
+            <Route exact path="/" element={<HomePage />} />
+            <Route path="/planning" element={<Calendar />} />
+            <Route path="/events" element={<Event />} />
+            <Route path="/venues" element={<Venue />} />
+          </Route>
+        </Routes>
+        {/* TODO: <Footer /> */}
+      </BrowserRouter>
+    </AppProvider>
   );
 }
 
