@@ -9,6 +9,9 @@ import eventsJson from "./temp_events.json";
 const AppContext = createContext();
 
 function AppProvider({ children }) {
+  const thisYear = new Date().getFullYear();
+  const [year, setYear] = useState(thisYear);
+
   const [locations, setLocations] = useState([]);
   const [venues, setVenues] = useState([]);
   const [events, setEvents] = useState({});
@@ -38,6 +41,10 @@ function AppProvider({ children }) {
   };
 
   const appContexts = {
+    // Year
+    year,
+    setYear,
+
     // Locations
     locations,
     setLocations,
