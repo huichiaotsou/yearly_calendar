@@ -22,11 +22,12 @@ function AppProvider({ children }) {
   };
 
   const fetchVenues = async (locations) => {
+    // const res = await axios.get(`http://${config.domain}:${config.backendPort}/venues`);
     setVenues(venuesJson.venues);
   };
 
   const fetchEvents = async () => {
-    // const res = await axios.get(`http://${config.domain}:${config.backendPort}/eventtypes`);
+    // const res = await axios.get(`http://${config.domain}:${config.backendPort}/events`);
     setEvents(eventsJson.events);
   };
 

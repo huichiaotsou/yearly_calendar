@@ -1,4 +1,19 @@
+import { useAppContext } from "../../hooks/use_contexts";
+
+function NavBarCity({ checkedLocation, city, handleOnclickTab }) {
+  return (
+    <li
+      className={checkedLocation === city ? "is-active" : ""}
+      onClick={() => handleOnclickTab(city)}
+    >
+      <a>{city}</a>
+    </li>
+  );
+}
+
 export default function NavBar({ checkedLocation, setCheckedLocation }) {
+  const { locations } = useAppContext();
+
   function handleOnclickTab(tabName) {
     setCheckedLocation(tabName);
   }
@@ -12,18 +27,17 @@ export default function NavBar({ checkedLocation, setCheckedLocation }) {
         >
           <a>All</a>
         </li>
-        <li
-          className={checkedLocation === "Taipei" ? "is-active" : ""}
-          onClick={() => handleOnclickTab("Taipei")}
-        >
-          <a>Taipei</a>
-        </li>
-        <li
-          className={checkedLocation === "Taichung" ? "is-active" : ""}
-          onClick={() => handleOnclickTab("Taichung")}
-        >
-          <a>Taichung</a>
-        </li>
+
+        {locations.map((city) => {
+          return (
+            <NavBarCity
+              key={city}
+              checkedLocation={checkedLocation}
+              city={city}
+              handleOnclickTab={handleOnclickTab}
+            />
+          );
+        })}
       </ul>
     </div>
   );

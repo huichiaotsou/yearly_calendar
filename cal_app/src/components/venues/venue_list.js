@@ -19,16 +19,28 @@ export default function VenueList({ loc }) {
     if (loc === "All") {
       return Object.keys(venues).map((location) => (
         <div key={location}>
-          {venues[location].map((venue) => (
-            <Venue location={location} venue={venue} />
-          ))}
+          <div className="venue_list_city_title tag is-light is-primary is-medium">
+            {location}
+          </div>
+          <div>
+            {venues[location].map((venue) => (
+              <Venue
+                key={`${location}-${venue}`}
+                location={location}
+                venue={venue}
+              />
+            ))}
+          </div>
         </div>
       ));
     } else if (venues[loc]) {
       return (
         <div>
+          <div className="venue_list_city_title tag is-light is-primary is-medium">
+            {loc}
+          </div>
           {venues[loc].map((venue) => (
-            <Venue location={loc} venue={venue} />
+            <Venue key={`${loc}-${venue}`} location={loc} venue={venue} />
           ))}
         </div>
       );

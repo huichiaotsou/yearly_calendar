@@ -1,8 +1,28 @@
+.venue_list_container{
+    margin-left: 65px;
+}
+
+@media only screen and (max-width: 600px) {
+    .venue_list_container{
+        display: flex;
+        justify-content: center;
+    }
+  }
+
+.venue_list_city_title {
+    margin-top: 20px;
+}
+
 .venue_container{
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 5px;
+    /* margin: 3px;
+    width: 350px; */
+}
+
+.venue_container:hover{
+    background-color: antiquewhite;
 }
 
 .venue{
