@@ -1,7 +1,7 @@
-import { useCalPlanningContext } from "../../hooks/use_contexts";
+import { useAppContext } from "../../hooks/use_contexts";
 
 function YearSelect() {
-  const { year, setYear } = useCalPlanningContext();
+  const { year, setYear } = useAppContext();
 
   const handleLastYear = async (e) => {
     await setYear(year - 1);

@@ -1,12 +1,11 @@
 import "../styles/calendar.css";
-import { CalPlanningProvider } from "../contexts/cal_planning";
-import Year from "../components/cal_planning/calendar";
-import YearSelect from "../components/cal_planning/year_select";
-import ScheduleDialog from "../components/cal_planning/dialog/dialog";
+import Year from "../components/calendar/calendar";
+import YearSelect from "../components/calendar/year_select";
+import ScheduleDialog from "../components/schedule_dialog/main";
 
 function Calendar() {
   return (
-    <CalPlanningProvider>
+    <>
       <div id="controller_container">
         <ScheduleDialog />
         <YearSelect />
@@ -15,7 +14,7 @@ function Calendar() {
       <div id="calendar-container">
         <Year />
       </div>
-    </CalPlanningProvider>
+    </>
   );
 }
 

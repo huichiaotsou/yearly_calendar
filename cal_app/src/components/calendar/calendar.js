@@ -1,7 +1,7 @@
-import { useCalPlanningContext } from "../../hooks/use_contexts";
+import { useAppContext } from "../../hooks/use_contexts";
 
 function Days({ month }) {
-  const { year } = useCalPlanningContext();
+  const { year } = useAppContext();
 
   const weekdayOfFirstDay = new Date(year, month - 1, 1).getDay();
   const daysNumber = new Date(year, month, 0).getDate();
@@ -30,7 +30,7 @@ function Days({ month }) {
   );
 }
 function Month({ month }) {
-  const { year } = useCalPlanningContext();
+  const { year } = useAppContext();
   const monthName = new Date(year, month - 1, 1).toLocaleString("default", {
     month: "long",
   });
@@ -58,7 +58,7 @@ function Month({ month }) {
 }
 
 function Year() {
-  const { year } = useCalPlanningContext();
+  const { year } = useAppContext();
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const calendar = months.map((m) => {
     return <Month year={year} month={m} key={`${year}-${m}`} />;

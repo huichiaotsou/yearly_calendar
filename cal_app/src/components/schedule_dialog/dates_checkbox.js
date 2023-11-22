@@ -1,8 +1,8 @@
-import { useDialogContext } from "../../../hooks/use_contexts";
-import { useCalPlanningContext } from "../../../hooks/use_contexts";
+import { useDialogContext } from "../../hooks/use_contexts";
+import { useAppContext } from "../..//hooks/use_contexts";
 
 const Day = ({ date, handleCheckboxChange }) => {
-  const { year } = useCalPlanningContext();
+  const { year } = useAppContext();
   const { checkedDays } = useDialogContext();
 
   const showEvents = (dateString) => {
@@ -30,7 +30,7 @@ const Day = ({ date, handleCheckboxChange }) => {
 const WeekdaysList = () => {
   const { checkedDays, setCheckedDays, recurringDay } = useDialogContext();
 
-  const { year } = useCalPlanningContext();
+  const { year } = useAppContext();
 
   const getDatesByMonth = (currYear) => {
     const startDate = new Date(currYear, 0, 1);
@@ -62,7 +62,7 @@ const WeekdaysList = () => {
 
   return (
     <div>
-      <h2>
+      <div className="dialog_titles">
         {"List of "}
         {
           [
@@ -76,10 +76,10 @@ const WeekdaysList = () => {
           ][recurringDay]
         }{" "}
         in {year}
-      </h2>
+      </div>
 
       {Object.entries(datesByMonth).map(([month, monthDates]) => (
-        <div key={month}>
+        <div key={month} className="month_container_checkbox">
           <br />
           <h3>{`${new Date(year, month - 1, 1).toLocaleString("default", {
             month: "long",
