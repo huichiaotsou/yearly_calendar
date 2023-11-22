@@ -1,0 +1,23 @@
+.venue_container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px;
+}
+
+.venue{
+    width: 120px;
+}
+
+.location {
+    width: 85px;
+}
+
+.venue_edit {
+    width: 40px;
+    margin: 5px;
+}
+
+.venue_delete {
+    width: 55px;
+}

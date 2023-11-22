@@ -12,6 +12,7 @@ export default function EventTimeDialog({ dialogRef, close }) {
     setDateEnd,
     recurringDay,
     setRecurringDay,
+    todayDateString,
     startTime,
     setStartTime,
     endTime,
@@ -46,6 +47,7 @@ export default function EventTimeDialog({ dialogRef, close }) {
             className="input date_time_input"
             type="date"
             value={dateEnd}
+            min={dateStart}
             id="event_date_start"
             onChange={(e) => {
               setDateEnd(e.target.value);
@@ -55,6 +57,39 @@ export default function EventTimeDialog({ dialogRef, close }) {
       </div>
     );
   }
+
+  let timePick = (
+    <div className="horizontal_container field">
+      <div className="field time_select">
+        <label className="label">Time Start</label>
+        <div className="control">
+          <input
+            className="input date_time_input"
+            type="time"
+            value={startTime}
+            onChange={(e) => {
+              setStartTime(e.target.value);
+              setEndTime(e.target.value);
+            }}
+          />
+        </div>
+      </div>
+      <div className="field time_select">
+        <label className="label">Time End</label>
+        <div className="control">
+          <input
+            className="input date_time_input"
+            type="time"
+            min={startTime}
+            value={endTime}
+            onChange={(e) => {
+              setEndTime(e.target.value);
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
 
   let recurringDays = "";
   if (isRecurring) {
@@ -110,7 +145,7 @@ export default function EventTimeDialog({ dialogRef, close }) {
             justifyContent: "center",
           }}
         >
-          <div className="dialog_titles">Schedule Time: {checkedEvent}</div>
+          <div className="dialog_titles">Schedule Time for {checkedEvent}</div>
 
           <div className="field">
             <input
@@ -123,6 +158,10 @@ export default function EventTimeDialog({ dialogRef, close }) {
                 if (!isRecurring) {
                   setRecurringDay("");
                 }
+                if (isRecurring) {
+                  setDateStart(todayDateString);
+                  setDateEnd(todayDateString);
+                }
               }}
             />
             <label htmlFor="is_recurring" className="">
@@ -132,30 +171,7 @@ export default function EventTimeDialog({ dialogRef, close }) {
 
           {datePick}
 
-          <div className="horizontal_container field">
-            <div className="field time_select">
-              <label className="label">Time Start</label>
-              <div className="control">
-                <input
-                  className="input date_time_input"
-                  type="time"
-                  value={startTime}
-                  onChange={(e) => setStartTime(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="field time_select">
-              <label className="label">Time End</label>
-              <div className="control">
-                <input
-                  className="input date_time_input"
-                  type="time"
-                  value={endTime}
-                  onChange={(e) => setEndTime(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
+          {timePick}
 
           {recurringDays}
 
@@ -163,7 +179,7 @@ export default function EventTimeDialog({ dialogRef, close }) {
 
           <button
             className="button is-primary"
-            onClick={() => {
+            onClick={(e) => {
               close();
               resetAllFields();
             }}

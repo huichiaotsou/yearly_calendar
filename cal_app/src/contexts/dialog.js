@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { useState } from "react";
-import axios from "axios";
-import config from "../config.json";
+// import axios from "axios";
+// import config from "../config.json";
 
 const DialogContext = createContext();
 
@@ -9,6 +9,7 @@ function getTodayDateString() {
   const today = new Date();
   return `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
 }
+const todayDateString = getTodayDateString();
 
 function DialogProvider({ children }) {
   // Event details
@@ -16,8 +17,8 @@ function DialogProvider({ children }) {
 
   // if isRecurring is true, omit dateStart/dateEnd
   // if not, it's the recurringDay that counts and there will be several dates
-  const [dateStart, setDateStart] = useState(getTodayDateString());
-  const [dateEnd, setDateEnd] = useState(getTodayDateString());
+  const [dateStart, setDateStart] = useState(todayDateString);
+  const [dateEnd, setDateEnd] = useState(todayDateString);
   const [recurringDay, setRecurringDay] = useState("");
 
   // Event start hour and end hour
@@ -36,8 +37,8 @@ function DialogProvider({ children }) {
     setCheckedLocations([]);
     setCheckedVenues([]);
     setRecurringDay("");
-    setDateStart(getTodayDateString());
-    setDateEnd(getTodayDateString());
+    setDateStart(todayDateString);
+    setDateEnd(todayDateString);
     setCheckedDays([]);
     setStartTime("");
     setEndTime("");
@@ -71,6 +72,7 @@ function DialogProvider({ children }) {
     setStartTime,
     endTime,
     setEndTime,
+    todayDateString,
 
     // functions - reset
     resetAllFields,
