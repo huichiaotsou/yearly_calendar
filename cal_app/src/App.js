@@ -5,9 +5,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // Styles
 import "bulma/css/bulma.css";
 
-// TODO: import Header from "./components/Header";
-// TODO: import Footer from "./components/Footer";
-
 // Nav Bar
 import NavBar from "./components/nav_bar";
 
@@ -24,7 +21,6 @@ function App() {
     <AppProvider>
       <BrowserRouter>
         <NavBar />
-        {/* TODO: <Header /> */}
         <Routes>
           <Route>
             <Route exact path="/" element={<HomePage />} />
@@ -33,7 +29,6 @@ function App() {
             <Route path="/venues" element={<Venue />} />
           </Route>
         </Routes>
-        {/* TODO: <Footer /> */}
       </BrowserRouter>
     </AppProvider>
   );

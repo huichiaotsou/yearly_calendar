@@ -1,6 +1,6 @@
 import "../styles/calendar.css";
-import Year from "../components/calendar";
-import YearSelect from "../components/year_select";
+import Year from "../components/calendar/calendar";
+import YearSelect from "../components/calendar/year_select";
 import ScheduleDialog from "../components/schedule_dialog/main";
 
 function Calendar() {
