@@ -1,3 +1,8 @@
+#add_venue_button{
+    margin-left: 25px;
+    border-bottom: none;
+}
+
 .venue_list_container{
     margin-left: 65px;
 }
