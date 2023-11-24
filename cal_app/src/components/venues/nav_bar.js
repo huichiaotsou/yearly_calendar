@@ -14,8 +14,6 @@ function NavBarCity({ checkedLocation, city, handleOnclickTab }) {
 export default function NavBar({ checkedLocation, setCheckedLocation }) {
   const { locations } = useAppContext();
 
-  console.log("locations: ", locations);
-
   function handleOnclickTab(tabName) {
     setCheckedLocation(tabName);
   }

@@ -5,6 +5,7 @@ import config from "../config.json";
 import venuesJson from "./temp_venues.json";
 import locationsJson from "./temp_locations.json";
 import eventsJson from "./temp_events.json";
+import eventTypesJson from "./temp_event_types.json";
 
 const AppContext = createContext();
 
@@ -15,6 +16,7 @@ function AppProvider({ children }) {
   const [locations, setLocations] = useState([]);
   const [venues, setVenues] = useState({});
   const [events, setEvents] = useState({});
+  const [eventTypes, setEventTypes] = useState([]);
 
   const fetchLocations = async () => {
     // const res = await axios.get(`http://${config.domain}:${config.backendPort}/locations`);
@@ -29,6 +31,11 @@ function AppProvider({ children }) {
   const fetchEvents = async () => {
     // const res = await axios.get(`http://${config.domain}:${config.backendPort}/events`);
     setEvents(eventsJson.events);
+  };
+
+  const fetchEventTypes = async () => {
+    // const res = await axios.get(`http://${config.domain}:${config.backendPort}/events`);
+    setEventTypes(eventTypesJson.eventTypes);
   };
 
   const appContexts = {
@@ -50,6 +57,11 @@ function AppProvider({ children }) {
     events,
     setEvents,
     fetchEvents,
+
+    // Event types
+    eventTypes,
+    setEventTypes,
+    fetchEventTypes,
   };
 
   return (
