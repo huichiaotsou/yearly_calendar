@@ -5,7 +5,8 @@ import NavBar from "../components/venues/nav_bar";
 import VenueList from "../components/venues/venue_list";
 
 function Venue() {
-  const { fetchLocations, fetchVenues } = useAppContext();
+  const { fetchLocations, fetchVenues, fetchEvents, fetchEventTypes } =
+    useAppContext();
   const [checkedLocation, setCheckedLocation] = useState("All");
 
   useEffect(() => {

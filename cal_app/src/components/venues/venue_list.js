@@ -15,6 +15,7 @@ function Venue({ location, venue }) {
 
 export default function VenueList({ loc }) {
   const { venues } = useAppContext();
+
   const renderVenues = () => {
     if (loc === "All") {
       return Object.keys(venues).map((location) => (

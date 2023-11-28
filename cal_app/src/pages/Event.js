@@ -2,13 +2,14 @@ import "../styles/venue.css";
 import { useState, useEffect } from "react";
 import { useAppContext } from "../hooks/use_contexts";
 import NavBar from "../components/events/nav_bar";
-// import VenueList from "../components/venues/venue_list";
+import EventList from "../components/events/event_list";
 
 function Event() {
-  const { fetchEventTypes } = useAppContext();
+  const { fetchEvents, fetchEventTypes } = useAppContext();
   const [checkedEventType, setCheckedEventType] = useState("All");
 
   useEffect(() => {
+    fetchEvents();
     fetchEventTypes();
   }, []);
 
@@ -18,9 +19,9 @@ function Event() {
         checkedEventType={checkedEventType}
         setCheckedEventType={setCheckedEventType}
       />
-      {/* <div className="venue_list_container">
-        <VenueList loc={checkedLocation} />
-      </div> */}
+      <div className="event_list_container">
+        <EventList eventType={checkedEventType} />
+      </div>
     </>
   );
 }

@@ -14,7 +14,7 @@ export default function EventLocationDialog({
 
   useEffect(() => {
     fetchEvents();
-  }, [events]);
+  }, []);
 
   function isFormValid() {
     return checkedEvent !== "";
